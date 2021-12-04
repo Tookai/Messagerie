@@ -4,6 +4,11 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const helmet = require("helmet");
+//
+//
+const userRoute = require("./routes/users");
+//
+//
 
 dotenv.config();
 app.use(express.json());
@@ -20,13 +25,7 @@ mongoose
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 // ----------
 
-app.use(async (req, res) => {
-  try {
-    res.status(200).json("Bonjour depuis le serveur.");
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+app.use("/api/auth", userRoute);
 
 app.listen(5500, () => {
   console.log("Backend server is running!");
