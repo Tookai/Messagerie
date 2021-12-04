@@ -1,12 +1,14 @@
 import { useState } from "react";
 import "../styles/loginpage.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [pseudo, setPseudo] = useState("");
   const [password, setPassword] = useState("");
 
   console.log(pseudo, password);
+  let navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -16,6 +18,7 @@ const LoginPage = () => {
       const user = { userId, userPseudo };
       localStorage.setItem("user", JSON.stringify(user));
       console.log("User connected");
+      navigate(`/`);
     });
   };
 

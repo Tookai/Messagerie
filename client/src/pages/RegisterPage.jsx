@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../styles/loginpage.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const [pseudo, setPseudo] = useState("");
@@ -8,11 +9,14 @@ const RegisterPage = () => {
   const [confirm, setConfirm] = useState("");
 
   console.log(pseudo, password, confirm);
+  let navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
     if (pseudo !== "" && password !== "" && confirm !== "" && password === confirm) {
       axios.post("http://localhost:5500/api/user/register", { pseudo, password }).then((res) => console.log(res.data));
+      console.log(`user created`);
+      navigate(`/login`);
     } else {
       alert("Il faut remplir toutes les cases.");
     }
