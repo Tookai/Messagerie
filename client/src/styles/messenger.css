@@ -43,3 +43,18 @@
   font-family: "Lato", sans-serif;
   margin-right: 1rem;
 }
+
+.messenger-btn {
+  padding: 1rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  background-color: rgb(124, 168, 204);
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+}
+
+.small {
+  font-size: 0.9rem;
+}

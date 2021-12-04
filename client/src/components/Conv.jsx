@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import TimeAgo from "timeago-react";
@@ -15,15 +15,17 @@ const Conv = ({ conv }) => {
   const { data: friend } = useQuery(`friend ${conv._id}`, () =>
     axios.get(`http://localhost:5500/api/user/${friendId[0]}`).then((res) => res.data)
   );
-  console.log(friend, "hello friend");
+
+  const queryClient = useQueryClient();
+  const handleClick = () => {
+    queryClient.invalidateQueries("messages");
+  };
 
   const {
     data: mess,
     isLoading: messLoad,
     isError: messErr,
-  } = useQuery(`mess ${conv._id}`, () => axios.get(`http://localhost:5500/api/message/${conv._id}`).then((res) => res.data));
-
-  console.log(mess, "what a mess");
+  } = useQuery(["mess", { conv }], () => axios.get(`http://localhost:5500/api/message/${conv._id}`).then((res) => res.data));
 
   if (messLoad) {
     return <div>Loading</div>;
@@ -33,7 +35,7 @@ const Conv = ({ conv }) => {
     return <div>Error</div>;
   }
   return (
-    <Link to={`/${conv._id}`}>
+    <Link to={`/${conv._id}`} onClick={handleClick}>
       <div>
         <div className="conv-box selected">
           <div className="conv-date">
