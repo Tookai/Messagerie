@@ -1,12 +1,38 @@
+import { useState } from "react";
 import "../styles/loginpage.css";
+import axios from "axios";
 
 const LoginPage = () => {
+  const [pseudo, setPseudo] = useState("");
+  const [password, setPassword] = useState("");
+
+  console.log(pseudo, password);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    axios.post("http://localhost:5500/api/user/login", { pseudo, password }).then((res) => console.log(res.data));
+  };
+
   return (
     <div className="loginpage">
       <form className="loginpage-form">
-        <input className="loginpage-input" type="text" name="pseudo" id="pseudo" placeholder="Pseudo" />
-        <input className="loginpage-input" type="password" name="password" id="password" placeholder="Password" />
-        <button className="loginpage-input btn" type="submit">
+        <input
+          className="loginpage-input"
+          type="text"
+          name="pseudo"
+          id="pseudo"
+          placeholder="Pseudo"
+          onChange={(e) => setPseudo(e.target.value)}
+        />
+        <input
+          className="loginpage-input"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button className="loginpage-input btn" type="submit" onClick={handleLogin}>
           Se Connecter
         </button>
       </form>

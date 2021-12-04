@@ -27,7 +27,7 @@ mongoose
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 // ----------
 
-app.use("/api/auth", userRoute);
+app.use("/api/user", userRoute);
 app.use("/api/message", messageRoute);
 app.use("/api/conversation", conversationRoute);
 

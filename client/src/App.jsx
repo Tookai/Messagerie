@@ -9,11 +9,11 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route exact path="/" element={<MessengerPage />} />
-
           <Route path="/login" element={<LoginPage />} />
 
           <Route path="/register" element={<RegisterPage />} />
+
+          <Route exact path="/" element={<MessengerPage />} />
         </Routes>
       </div>
     </Router>
