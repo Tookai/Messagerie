@@ -10,7 +10,13 @@ const LoginPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5500/api/user/login", { pseudo, password }).then((res) => console.log(res.data));
+    axios.post("http://localhost:5500/api/user/login", { pseudo, password }).then((res) => {
+      const userId = res.data._id;
+      const userPseudo = res.data.pseudo;
+      const user = { userId, userPseudo };
+      localStorage.setItem("user", JSON.stringify(user));
+      console.log("User connected");
+    });
   };
 
   return (
