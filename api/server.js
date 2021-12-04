@@ -7,6 +7,8 @@ const helmet = require("helmet");
 //
 //
 const userRoute = require("./routes/users");
+const messageRoute = require("./routes/messages");
+const conversationRoute = require("./routes/conversations");
 //
 //
 
@@ -26,6 +28,8 @@ mongoose
 // ----------
 
 app.use("/api/auth", userRoute);
+app.use("/api/message", messageRoute);
+app.use("/api/conversation", conversationRoute);
 
 app.listen(5500, () => {
   console.log("Backend server is running!");
