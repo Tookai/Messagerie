@@ -1,13 +1,16 @@
-import "../styles/navbar.css"
+import "../styles/navbar.css";
 
 const Navbar = () => {
-    return (
-        <div className="navbar">
-            <h1>Live Message App</h1>
-            <p>Bonjour, toi</p>
-            <p>Se Déconnecter</p>
-        </div>
-    )
-}
+  const userConnected = localStorage.getItem("user");
+  const user = JSON.parse(userConnected);
 
-export default Navbar
+  return (
+    <div className="navbar">
+      <h1>Live Message App</h1>
+      <p>Bonjour {user?.userPseudo || "toi"}</p>
+      <p>Se Déconnecter</p>
+    </div>
+  );
+};
+
+export default Navbar;

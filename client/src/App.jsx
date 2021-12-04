@@ -17,7 +17,9 @@ function App() {
 
             <Route path="/register" element={<RegisterPage />} />
 
-            <Route exact path="/" element={<MessengerPage />} />
+            <Route path="/" element={<MessengerPage />} />
+
+            <Route path="/:id" element={<MessengerPage />} />
           </Routes>
         </div>
       </Router>

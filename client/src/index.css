@@ -22,6 +22,16 @@ h4 {
   white-space: nowrap;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 2px;

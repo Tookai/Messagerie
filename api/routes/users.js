@@ -43,6 +43,15 @@ router.get("/all", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get("/:id", async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id });
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 //
 //
 //

@@ -3,8 +3,6 @@ import axios from "axios";
 import { useQuery } from "react-query";
 
 const Users = () => {
-  const users = axios.get("http://localhost:5500/api/user/all").then((res) => res.data);
-
   const { data, isLoading, isError } = useQuery("users", () => axios.get("http://localhost:5500/api/user/all").then((res) => res.data));
 
   console.log(data);
