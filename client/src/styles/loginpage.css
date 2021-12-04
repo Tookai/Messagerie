@@ -1,0 +1,26 @@
+.loginpage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loginpage-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginpage-input {
+  font-size: 25px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 0.3rem;
+}
+
+.btn {
+  background-color: rgb(65, 143, 207);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

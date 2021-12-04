@@ -1,19 +1,22 @@
-import Navbar from "./components/Navbar";
-import Conversations from "./components/Conversations";
-import Messenger from "./components/Messenger";
-import Users from "./components/Users";
-import "./app.css"
+import "./app.css";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import MessengerPage from "./pages/MessengerPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <div className="app-main">
-        <Conversations />
-        <Messenger />
-        <Users />
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route exact path="/" element={<MessengerPage />} />
+
+          <Route path="/login" element={<LoginPage />} />
+
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 
