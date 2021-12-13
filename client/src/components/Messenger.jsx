@@ -27,8 +27,10 @@ const Messenger = () => {
     axios
       .post(`http://localhost:5500/api/message`, { conversationId: convId, sender: user.userPseudo, text })
       .then((res) => console.log(res.data));
+    queryClient.invalidateQueries(["messages", { convId }]);
     queryClient.invalidateQueries("messages");
     queryClient.invalidateQueries("mess");
+    setText("");
   };
 
   return (
@@ -36,7 +38,7 @@ const Messenger = () => {
       <div className="messenger-wrapper">
         <div className="messenger-massages">
           {messages?.map((m) => (
-            <div className={`${m.sender === user.userPseudo ? "you" : "them"} messenger-msg`}>
+            <div className={`${m.sender === user.userPseudo ? "you" : "them"} messenger-msg`} key={m.createdAt}>
               <p className="small">{m.sender}</p>
               <p>{m.text}</p>
               <p className="small">
@@ -47,7 +49,14 @@ const Messenger = () => {
         </div>
       </div>
       <div className="messenger-form">
-        <textarea className="messenger-textarea" name="message" id="message" rows="5" onChange={(e) => setText(e.target.value)}></textarea>
+        <textarea
+          className="messenger-textarea"
+          name="message"
+          id="message"
+          rows="5"
+          onChange={(e) => setText(e.target.value)}
+          value={text}
+        ></textarea>
         <button className="messenger-btn" onClick={handleSend}>
           Envoyer
         </button>

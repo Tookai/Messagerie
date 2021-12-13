@@ -26,7 +26,7 @@ const Conversations = () => {
       <h2>Conversations</h2>
       <div className="conv-wrapper">
         {conv?.map((c) => (
-          <Conv conv={c} />
+          <Conv conv={c} key={c._id} />
         ))}
       </div>
     </div>

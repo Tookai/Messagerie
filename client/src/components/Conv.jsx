@@ -39,10 +39,10 @@ const Conv = ({ conv }) => {
       <div>
         <div className="conv-box selected">
           <div className="conv-date">
-            <TimeAgo datetime={mess[mess.length - 1].createdAt} locale="fr" />
+            <TimeAgo datetime={mess[mess.length - 1]?.createdAt} locale="fr" />
           </div>
           <div className="conv-user">{friend?.pseudo}</div>
-          <div className="conv-preview">{mess[mess.length - 1].text}</div>
+          <div className="conv-preview">{mess[mess.length - 1]?.text}</div>
         </div>
       </div>
     </Link>
