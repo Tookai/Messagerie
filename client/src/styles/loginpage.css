@@ -24,3 +24,11 @@
   outline: none;
   cursor: pointer;
 }
+
+.btn2 {
+  background-color: rgb(65, 207, 164);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 5rem;
+}

@@ -22,6 +22,10 @@ const RegisterPage = () => {
     }
   };
 
+  const handleClick = () => {
+    navigate("/login");
+  };
+
   return (
     <div className="loginpage">
       <form className="loginpage-form">
@@ -51,6 +55,10 @@ const RegisterPage = () => {
         />
         <button className="loginpage-input btn" type="submit" onClick={handleRegister}>
           Créer mon compte
+        </button>
+
+        <button className="loginpage-input btn2" onClick={handleClick}>
+          Vous avez déjà un compte ?
         </button>
       </form>
     </div>

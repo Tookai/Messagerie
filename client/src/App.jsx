@@ -7,6 +7,9 @@ import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 
 const queryClient = new QueryClient();
 
+const userConnected = localStorage.getItem("user");
+console.log(userConnected);
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
